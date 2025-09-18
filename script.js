@@ -83,14 +83,106 @@ function Objeto(){
     }
 }
 
+//5
+function duplicarArray(numeros) {
+   const duplicados = numeros.map(num => num * 2);
+   return duplicados;
+ }
+ 
+//6
+function trianguloB(n) {
+   for (let i = 1; i <= n; i++) {
+     let estrellas = "*".repeat(2 * i - 1);
+     let guiones = "-".repeat(n - i);
+     console.log(guiones + estrellas + guiones);
+   }
+ }
+ 
+//7
+
+function filtrarNombres() {
+   const input = document.getElementById("nombres").value;
+ 
+   if (!input) {
+     alert("⚠️ Ingresá al menos un nombre");
+     return;
+   }
+ 
+   // Separar nombres por coma y limpiar espacios
+   const lista = input.split(",").map(nombre => nombre.trim());
+ 
+   // Filtrar los que comienzan con 'A' o 'a'
+   const filtrados = lista.filter(nombre => nombre.charAt(0).toUpperCase() === "A");
+ 
+   // Mostrar en el DOM
+   const resultado = document.getElementById("resultado");
+   resultado.innerHTML = ""; // limpiar lista previa
+ 
+   if (filtrados.length === 0) {
+     resultado.innerHTML = "<li>No hay nombres que empiecen con A</li>";
+   } else {
+     filtrados.forEach(nombre => {
+       const li = document.createElement("li");
+       li.textContent = nombre;
+       resultado.appendChild(li);
+     });
+   }
+ }
+ 
+//8
+function reemplazarPalabra() {
+   const texto = document.getElementById("texto").value;
+   const palabra = document.getElementById("palabra").value;
+   const reemplazo = document.getElementById("reemplazo").value;
+   const resultado = document.getElementById("resultado");
+ 
+   if (!texto || !palabra || !reemplazo) {
+     alert("⚠️ Completá todos los campos");
+     return;
+   }
+ 
+   const regex = new RegExp(palabra, "g");
+ 
+   const nuevoTexto = texto.replace(regex, reemplazo);
+ 
+   resultado.textContent = nuevoTexto;
+ }
  
 
+//9
+function cortarTexto() {
+   const texto = document.getElementById("texto").value;
+   const numero = parseInt(document.getElementById("numero").value);
+   const resultado = document.getElementById("resultado");
+ 
+   if (!texto || isNaN(numero)) {
+     alert("⚠️ Ingresá una cadena y un número válido");
+     return;
+   }
+ 
+   const nuevoTexto = texto.substring(0, numero);
+   resultado.textContent = nuevoTexto;
+ }
+ 
 
-
-
+//10
+function mostrarLista() {
+   const input = document.getElementById("lista").value;
+   const resultado = document.getElementById("resultado");
+ 
+   if (!input) {
+     alert("⚠️ Ingresá una lista de elementos separados por coma");
+     return;
+   }
+ 
+   const array = input.split(",").map(el => el.trim());
+   const nuevoString = array.join(" - ");
+ 
+   resultado.textContent = nuevoString;
+} 
 
 //11
-function calcularLista() {
+/*function calcularLista() {
    const lista = document.getElementById("listaCompras");
    let textoLista = lista.value;
    let productos = textoLista.split(":");
@@ -110,4 +202,39 @@ function calcularLista() {
    }
 
    alert(texto);
+}*/
+
+function calcularLista(){
+    const lista = document.getElementById("listaCompras");
+    let textoLista = lista.value;
+
+    for(let i = 0; i < 5; i++){
+       for(let i = 0; i < textoLista.length; i++){
+         if(!esNumero(textoLista[i])){
+         textoLista = textoLista.replace(textoLista[i], "");
+         }
+   }
+}
+
+
+
+   let precios = textoLista.split(" ");
+   let total = 0;
+   for(let i = 0; i < precios.length; i++){
+      total += parseFloat(precios[i]);
+   }
+
+
+   alert(total);
+}
+
+function esNumero(char){
+   let Es = false;
+   let numeros = "1234567890. ";
+   for(let i = 0; i < numeros.length; i++){
+      if(numeros[i] == char){
+         Es = true;
+      }
+   }
+   return Es;
 }
