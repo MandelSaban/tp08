@@ -47,7 +47,43 @@ function frutas() {
 }
 
 //3
+function comprobar(){
+   if (10 == "10"){
+      console.log("10 == 10");
+   } else{
+      console.log("1 falso");
+   }
+   if (10 === "10"){
+      console.log("10 === 10");
+   } else{
+      console.log("2 falso");
+   }
+   console.log(typeof 10.6)
+   if (true == 1){
+      console.log("true == 1");
+   } else{
+      console.log("4 falso");
+   }
+}
 
+//4
+function Objeto(){
+   const ciudad = {
+      nombre: "Buenos Aires",
+      fechaFundacion: "1536-02-02",
+      poblacion: 3075646,
+      extension: "203 km²"
+    };
+    
+    for (let clave in ciudad) {
+      if (ciudad.hasOwnProperty(clave)) {
+        console.log("Clave: " + clave);
+        console.log("Valor: " + ciudad[clave]);
+      }
+    }
+}
+
+ 
 
 
 
@@ -58,15 +94,20 @@ function calcularLista() {
    const lista = document.getElementById("listaCompras");
    let textoLista = lista.value;
    let productos = textoLista.split(":");
-   let precios = productos.map(item => item.split(","));
+   let precios = productos;
+
+   for(let i = 0; i < productos.length; i++){
+      precios[i].split(", ");
+   }
 
    let total = 0;
+   let texto = "";
 
    for (let i = 0; i < precios.length; i++) {
         if(precios[i].includes("0") || precios[i].includes("1") || precios[i].includes("2") || precios[i].includes("3") || precios[i].includes("4") || precios[i].includes("5") || precios[i].includes("6") || precios[i].includes("7") || precios[i].includes("8") || precios[i].includes("9")){
-            total += parseInt(precios[i]);
+            texto += ""+(precios[i]);
         }
    }
 
-   alert(total);
+   alert(texto);
 }
