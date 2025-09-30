@@ -86,8 +86,9 @@ function Objeto(){
 //5
 function duplicarArray(numeros) {
    const duplicados = numeros.map(num => num * 2);
-   return duplicados;
+   console.log(duplicados);
  }
+ 
  
 //6
 function trianguloB(n) {
@@ -108,15 +109,13 @@ function filtrarNombres() {
      return;
    }
  
-   // Separar nombres por coma y limpiar espacios
+
    const lista = input.split(",").map(nombre => nombre.trim());
  
-   // Filtrar los que comienzan con 'A' o 'a'
    const filtrados = lista.filter(nombre => nombre.charAt(0).toUpperCase() === "A");
  
-   // Mostrar en el DOM
    const resultado = document.getElementById("resultado");
-   resultado.innerHTML = ""; // limpiar lista previa
+   resultado.innerHTML = ""; 
  
    if (filtrados.length === 0) {
      resultado.innerHTML = "<li>No hay nombres que empiecen con A</li>";
